@@ -26,3 +26,14 @@ while game_is_on:
     if count % 6 == 0:
         cars.new_car()
     count += 1
+
+    # Detect collision with car
+    if cars.hit_turtle(turtle):
+        game_is_on = False
+
+    # Detect when player reaches other side
+    if turtle.finished():
+        turtle.go_back()
+        cars.speed_up()
+
+screen.exitonclick()
