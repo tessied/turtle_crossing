@@ -11,6 +11,7 @@ screen.tracer(0)
 
 turtle = Player()
 cars = CarManager()
+scoreboard = Scoreboard()
 
 screen.listen()
 screen.onkey(turtle.move, "Up")
@@ -30,10 +31,12 @@ while game_is_on:
     # Detect collision with car
     if cars.hit_turtle(turtle):
         game_is_on = False
+        scoreboard.game_over()
 
     # Detect when player reaches other side
     if turtle.finished():
         turtle.go_back()
         cars.speed_up()
+        scoreboard.level_up()
 
 screen.exitonclick()
